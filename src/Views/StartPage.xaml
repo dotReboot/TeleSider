@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TeleSider.Views.StartPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"/>
+    </ContentPage.Behaviors>
+    <VerticalStackLayout Spacing="10" Padding="0,20,0,0">
+        <Label
+            Text="Welcome to"
+            FontSize="18"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Label
+            Text="TeleSider"
+            TextDecorations="Underline"
+            FontSize="32"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"/>
+        <Frame 
+            Margin="0,50,0,0"
+            CornerRadius="15"
+            BackgroundColor="White"
+            HeightRequest="460"
+            WidthRequest="350"
+            >
+            <VerticalStackLayout>
+                <Label
+                    Text="Sign In"
+                    TextColor="Black"
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    />
+                <Label
+                    Padding="0,10,0,0"
+                    Text="Please, sign in with your Telegram account"
+                    TextColor="Black"
+                    FontSize="16"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+                <Frame
+                    Margin="0,20,0,20"
+                    CornerRadius="35"
+                    HeightRequest="180"
+                    WidthRequest="180"
+                    BackgroundColor="WhiteSmoke"
+                    >
+                    <VerticalStackLayout>
+                        <Image
+                            Source="telegram.png"
+                            HeightRequest="150"
+                            WidthRequest="100"
+                        />
+                    </VerticalStackLayout>
+                </Frame>
+                <Button
+                    BackgroundColor="DeepSkyBlue"
+                    Text="Sign in"
+                    TextColor="Black"
+                    FontSize="Body"
+                    HeightRequest="55"
+                    WidthRequest="250"
+                    />
+                <Label
+                    Margin="150,10,0,0"
+                    Text="Don't have an account?"
+                    TextColor="Black"
+                    FontSize="12"
+                    VerticalOptions="Center"/>
+                <Label
+                    Margin="238,0,0,0"
+                    Text="Sign up"
+                    TextColor="Black"
+                    TextDecorations="Underline"
+                    FontSize="12">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{OnPlatform 
+                            Android='https://telegram.org/android',
+                            iOS='https://telegram.org/dl/ios',
+                            Default='https://telegram.org'
+                            }"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </VerticalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>
