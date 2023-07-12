@@ -1,4 +1,6 @@
-﻿namespace TeleSider;
+﻿using TeleSider.Pages;
+
+namespace TeleSider;
 
 public partial class AppShell : Shell
 {
