@@ -57,7 +57,7 @@
                     </VerticalStackLayout>
                 </Frame>
                 <Button
-                    BackgroundColor="DeepSkyBlue"
+                    BackgroundColor="{x:DynamicResource Tertiary}"
                     Text="Sign in"
                     TextColor="Black"
                     FontSize="Body"
