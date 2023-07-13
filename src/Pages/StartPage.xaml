@@ -6,9 +6,9 @@
              xmlns:viewmodel="clr-namespace:TeleSider.ViewModels"
              x:DataType="viewmodel:StartPageViewModel" >
     <ContentPage.Behaviors>
-        <toolkit:StatusBarBehavior StatusBarColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"/>
+        <toolkit:StatusBarBehavior StatusBarColor="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Primary}}"/>
     </ContentPage.Behaviors>
-    <VerticalStackLayout Spacing="10" Padding="0,20,0,0">
+    <VerticalStackLayout Spacing="5" Padding="0,20,0,0" BackgroundColor="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Primary}}">
         <Label
             Text="Welcome to"
             FontSize="18"
@@ -23,21 +23,21 @@
         <Frame 
             Margin="0,50,0,0"
             CornerRadius="15"
-            BackgroundColor="White"
+            BackgroundColor="{StaticResource White}"
             HeightRequest="460"
             WidthRequest="350"
             >
             <VerticalStackLayout>
                 <Label
                     Text="Sign In"
-                    TextColor="Black"
+                    TextColor="{StaticResource Secondary}"
                     FontSize="30"
                     FontAttributes="Bold"
                     />
                 <Label
-                    Padding="0,10,0,0"
-                    Text="Please, sign in with your Telegram account"
-                    TextColor="Black"
+                    Padding="0,10,10,0"
+                    Text="Please, sign in to your Telegram account"
+                    TextColor="{StaticResource Black}"
                     FontSize="16"
                     VerticalOptions="Center"
                     HorizontalOptions="Center"/>
@@ -46,10 +46,10 @@
                     CornerRadius="35"
                     HeightRequest="180"
                     WidthRequest="180"
-                    BackgroundColor="WhiteSmoke"
+                    BackgroundColor="{StaticResource White}"
                     >
                     <VerticalStackLayout>
-                        <Image
+                        <Image 
                             Source="telegram.png"
                             HeightRequest="150"
                             WidthRequest="100"
@@ -57,23 +57,22 @@
                     </VerticalStackLayout>
                 </Frame>
                 <Button
-                    BackgroundColor="{x:DynamicResource Tertiary}"
                     Text="Sign in"
-                    TextColor="Black"
+                    TextColor="{StaticResource Black}"
                     FontSize="Body"
                     HeightRequest="55"
-                    WidthRequest="250"
+                    WidthRequest="240"
                     />
                 <Label
-                    Margin="150,10,0,0"
+                    Margin="140,10,0,0"
                     Text="Don't have an account?"
-                    TextColor="Black"
+                    TextColor="{StaticResource Black}"
                     FontSize="12"
                     VerticalOptions="Center"/>
                 <Label
-                    Margin="238,0,0,0"
+                    Margin="228,0,0,0"
                     Text="Sign up"
-                    TextColor="Black"
+                    TextColor="{StaticResource Black}"
                     TextDecorations="Underline"
                     FontSize="12">
                     <Label.GestureRecognizers>
