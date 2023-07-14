@@ -59,24 +59,24 @@
                             <Label
                             Margin="{OnPlatform Android='5,7,0,0', WinUI='5,10,-5,0'}"
                             Text="+"
-                            FontSize="14"
                             TextColor="{StaticResource Black}"
+                            FontSize="14"
                             />
-                            
                             <Entry
+                                Text="{Binding CountryCode}"
                                 Keyboard="Telephone"
                                 ReturnType="Done"
                                 Placeholder="XXX"
-                                TextColor="{StaticResource Black}"
                                 MaxLength="3"
+                                TextColor="{StaticResource Black}"
                                 HeightRequest="40"
                                 WidthRequest="35"
                             />
                         </HorizontalStackLayout>
                     </Frame>
                     <Frame
-                        Padding="{OnPlatform Android='0,5,0,0', WinUI='0,0,0,0'}"
                         Margin="10,0,0,0"
+                        Padding="{OnPlatform Android='0,5,0,0', WinUI='0,0,0,0'}"
                         BackgroundColor="{StaticResource White}"
                         HeightRequest="40"
                         WidthRequest="200"
@@ -85,6 +85,7 @@
                             Keyboard="Telephone"
                             ReturnType="Done"
                             Placeholder="XXXXXXX"
+                            Text="{Binding PhoneNumber}"
                             TextColor="{StaticResource Black}"
                             MaxLength="15"
                             HeightRequest="40"
@@ -93,6 +94,7 @@
                     </Frame>
                 </HorizontalStackLayout>
                 <Button
+                    Command="{Binding SignInButtonPressedCommand}"
                     Text="Sign in"
                     TextColor="{StaticResource White}"
                     FontSize="Body"
