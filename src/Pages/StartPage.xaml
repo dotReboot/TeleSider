@@ -21,13 +21,14 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center"/>
         <Frame 
-            Margin="0,50,0,0"
+            Margin="0,70,0,0"
             CornerRadius="15"
             BackgroundColor="{StaticResource White}"
-            HeightRequest="460"
+            HeightRequest="380"
             WidthRequest="350"
             >
-            <VerticalStackLayout>
+            <VerticalStackLayout
+                >
                 <Label
                     Text="Sign In"
                     TextColor="{StaticResource Secondary}"
@@ -35,46 +36,82 @@
                     FontAttributes="Bold"
                     />
                 <Label
-                    Padding="0,10,10,0"
+                    Margin="0,10,0,0"
                     Text="Please, sign in to your Telegram account"
                     TextColor="{StaticResource Black}"
                     FontSize="16"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"/>
-                <Frame
-                    Margin="0,20,0,20"
-                    CornerRadius="35"
-                    HeightRequest="180"
-                    WidthRequest="180"
-                    BackgroundColor="{StaticResource White}"
+                    VerticalOptions="Center"/>
+                <Label
+                    Margin="0,30,0,0"
+                    Text="Enter your phone number below:"
+                    TextColor="{StaticResource Secondary}"
+                    FontSize="16"/>
+                <HorizontalStackLayout
+                    Margin="20,10,0,50"
                     >
-                    <VerticalStackLayout>
-                        <Image 
-                            Source="telegram.png"
-                            HeightRequest="150"
-                            WidthRequest="100"
+                    <Frame
+                    Padding="{OnPlatform Android='0,5,0,0', WinUI='0,0,0,0'}"
+                    BackgroundColor="{StaticResource White}"
+                    HeightRequest="40"
+                    WidthRequest="50"
+                    >
+                        <HorizontalStackLayout>
+                            <Label
+                            Margin="{OnPlatform Android='5,7,0,0', WinUI='5,10,-5,0'}"
+                            Text="+"
+                            FontSize="14"
+                            TextColor="{StaticResource Black}"
+                            />
+                            
+                            <Entry
+                                Keyboard="Telephone"
+                                ReturnType="Done"
+                                Placeholder="XXX"
+                                TextColor="{StaticResource Black}"
+                                MaxLength="3"
+                                HeightRequest="40"
+                                WidthRequest="35"
+                            />
+                        </HorizontalStackLayout>
+                    </Frame>
+                    <Frame
+                        Padding="{OnPlatform Android='0,5,0,0', WinUI='0,0,0,0'}"
+                        Margin="10,0,0,0"
+                        BackgroundColor="{StaticResource White}"
+                        HeightRequest="40"
+                        WidthRequest="200"
+                        >
+                        <Entry
+                            Keyboard="Telephone"
+                            ReturnType="Done"
+                            Placeholder="XXXXXXX"
+                            TextColor="{StaticResource Black}"
+                            MaxLength="15"
+                            HeightRequest="40"
+                            WidthRequest="190"
                         />
-                    </VerticalStackLayout>
-                </Frame>
+                    </Frame>
+                </HorizontalStackLayout>
                 <Button
                     Text="Sign in"
-                    TextColor="{StaticResource Black}"
+                    TextColor="{StaticResource White}"
                     FontSize="Body"
                     HeightRequest="55"
                     WidthRequest="240"
                     />
                 <Label
-                    Margin="140,10,0,0"
+                    Margin="0,10,0,0"
                     Text="Don't have an account?"
                     TextColor="{StaticResource Black}"
                     FontSize="12"
-                    VerticalOptions="Center"/>
+                    HorizontalOptions="Center"/>
                 <Label
-                    Margin="228,0,0,0"
                     Text="Sign up"
                     TextColor="{StaticResource Black}"
                     TextDecorations="Underline"
-                    FontSize="12">
+                    FontSize="12"
+                    HorizontalOptions="Center"
+                    >
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding TapSignUpCommand}" 
                             CommandParameter="{OnPlatform 
