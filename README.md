@@ -1,4 +1,4 @@
-# TeleSider-MAUI-App
+# Info
 TeleSider is a secure cloud storage based on Telegram, it allows you to control the items that you have saved in the Telegram messenger
 
 TeleSider uses Telegram API to connect to the user's account and retrieve all the saved items. These items are then displayed in a simple UI
