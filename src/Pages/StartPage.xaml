@@ -53,7 +53,7 @@
                     Padding="{OnPlatform Android='0,5,0,0', WinUI='0'}"
                     BackgroundColor="{StaticResource White}"
                     HeightRequest="40"
-                    WidthRequest="50"
+                    WidthRequest="{OnPlatform Android='60', WinUI='70'}"
                     >
                         <HorizontalStackLayout>
                             <Label
@@ -66,11 +66,11 @@
                                 Text="{Binding CountryCode}"
                                 Keyboard="Telephone"
                                 ReturnType="Done"
-                                Placeholder="XXX"
-                                MaxLength="3"
+                                Placeholder="XXXX"
+                                MaxLength="4"
                                 TextColor="{StaticResource Black}"
                                 HeightRequest="40"
-                                WidthRequest="35"
+                                WidthRequest="{OnPlatform Android='40', WinUI='60'}"
                             />
                         </HorizontalStackLayout>
                     </Frame>
