@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodel="clr-namespace:TeleSider.ViewModels"
+             x:DataType="viewmodel:PhoneVerificationPageViewModel"
+             x:Class="TeleSider.Pages.PhoneVerificationPage"
+             Title="Verify your phone number">
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Primary}}"/>
+    </ContentPage.Behaviors>
+    <VerticalStackLayout BackgroundColor="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Primary}}">
+        <Frame
+            Margin="0,120"
+            CornerRadius="15"
+            BackgroundColor="{StaticResource White}"
+            HeightRequest="{OnPlatform Android='320', WinUI='350'}"
+            WidthRequest="{OnPlatform Android='350', WinUI='400'}"
+            >
+            <VerticalStackLayout>
+                <Label 
+                    Margin="0,0,0,10"
+                    Text="{Binding PhoneNumber}"
+                    TextColor="{StaticResource Black}"
+                    FontSize="20"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+                <Label 
+                    Text="Please, enter the code that was sent to you:"
+                    FontSize="16"
+                    TextColor="{StaticResource Secondary}"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+                <Frame 
+                    Margin="0,30,0,60"
+                    BackgroundColor="{StaticResource White}"
+                    HeightRequest="{OnPlatform Android='50', WinUI='80'}"
+                    WidthRequest="{OnPlatform Android='200', WinUI='240'}"
+                    >
+                    <Entry
+                        ReturnType="Done"
+                        Placeholder="XXXXXX"
+                        BackgroundColor="{StaticResource White}"
+                        Text="{Binding VerificationCode}"
+                        TextColor="{StaticResource Black}"
+                        FontSize="{OnPlatform WinUI='24'}"
+                        HorizontalTextAlignment="Center"
+                        MaxLength="6"
+                        HeightRequest="40"
+                        WidthRequest="190"
+                    />
+                </Frame>
+                <Button
+                    Command="{Binding SubmitButtonPressedCommand}"
+                    Text="Submit"
+                    TextColor="{StaticResource White}"
+                    FontSize="Body"
+                    HeightRequest="55"
+                    WidthRequest="240"
+                
+                />
+            </VerticalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,26 @@
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using System.Diagnostics;
+using System.Numerics;
+using TeleSider.Pages;
+
+namespace TeleSider.ViewModels;
+
+[QueryProperty(nameof(PhoneNumber), "PhoneNumber")]
+public partial class PhoneVerificationPageViewModel : ObservableObject
+{
+    [ObservableProperty]
+    string phoneNumber;
+
+    [ObservableProperty]
+    public string verificationCode = null;
+
+    [RelayCommand]
+    public async Task SubmitButtonPressed()
+    {
+        if (VerificationCode == null || VerificationCode.Length < 6)
+        {
+            await Shell.Current.DisplayAlert("Invalid verification code", "Please, check the verification code and try again", "Ok", "Cancel", FlowDirection.LeftToRight);
+        }
+    }
+}

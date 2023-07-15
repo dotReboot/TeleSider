@@ -1,6 +1,5 @@
 using TeleSider.ViewModels;
 
-
 namespace TeleSider.Pages;	
 
 public partial class StartPage : ContentPage
