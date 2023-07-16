@@ -33,22 +33,27 @@
                     HorizontalOptions="Center" />
                 <Frame 
                     Margin="0,30,0,60"
+                    Padding="5"
                     BackgroundColor="{StaticResource White}"
                     HeightRequest="{OnPlatform Android='50', WinUI='80'}"
                     WidthRequest="{OnPlatform Android='200', WinUI='240'}"
                     >
-                    <Entry
-                        ReturnType="Done"
-                        Placeholder="XXXXXX"
-                        BackgroundColor="{StaticResource White}"
-                        Text="{Binding VerificationCode}"
-                        TextColor="{StaticResource Black}"
-                        FontSize="{OnPlatform WinUI='24'}"
-                        HorizontalTextAlignment="Center"
-                        MaxLength="6"
-                        HeightRequest="40"
-                        WidthRequest="190"
-                    />
+                    <HorizontalStackLayout
+                        Margin="{OnPlatform Android='0,10,0,0', WinUI='20,15,0,0'}"
+                        >
+                        <Entry
+                            ReturnType="Done"
+                            Placeholder="XXXXXX"
+                            BackgroundColor="{StaticResource White}"
+                            Text="{Binding VerificationCode}"
+                            TextColor="{StaticResource Black}"
+                            FontSize="{OnPlatform WinUI='24'}"
+                            HorizontalTextAlignment="Center"
+                            MaxLength="6"
+                            HeightRequest="40"
+                            WidthRequest="190"
+                        />
+                    </HorizontalStackLayout>
                 </Frame>
                 <Button
                     Command="{Binding SubmitButtonPressedCommand}"
