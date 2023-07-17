@@ -3,62 +3,54 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:viewmodel="clr-namespace:TeleSider.ViewModels"
-             x:DataType="viewmodel:PhoneVerificationPageViewModel"
-             x:Class="TeleSider.Pages.PhoneVerificationPage"
-             Title="Verify your phone number">
+             x:DataType="viewmodel:_2FAPageViewModel"
+             x:Class="TeleSider.Pages._2FAPage"
+             Title="Enter your 2FA Password">
     <ContentPage.Behaviors>
         <toolkit:StatusBarBehavior StatusBarColor="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Primary}}"/>
     </ContentPage.Behaviors>
     <VerticalStackLayout BackgroundColor="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Primary}}">
         <Frame
-            Margin="0,120"
+            Margin="0,150"
             CornerRadius="15"
             BackgroundColor="{StaticResource White}"
-            HeightRequest="{OnPlatform Android='320', WinUI='350'}"
+            HeightRequest="{OnPlatform Android='280', WinUI='300'}"
             WidthRequest="{OnPlatform Android='350', WinUI='400'}"
             >
             <VerticalStackLayout>
-                <Label 
-                    Margin="0,0,0,10"
-                    Text="{Binding PhoneNumber}"
-                    TextColor="{StaticResource Black}"
-                    FontSize="20"
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Center" />
-                <Label 
-                    Margin="0,20,0,0"
-                    Text="Please, enter the code that was sent to you via SMS:"
+                <Label
+                    Text="Please, enter your Telegram password below:"
                     FontSize="16"
                     TextColor="{StaticResource Secondary}"
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" />
                 <Frame 
-                    Margin="0,10,0,60"
+                    Margin="0,30,0,60"
                     Padding="5"
                     BackgroundColor="{StaticResource White}"
                     HeightRequest="{OnPlatform Android='50', WinUI='80'}"
-                    WidthRequest="{OnPlatform Android='200', WinUI='240'}"
+                    WidthRequest="{OnPlatform Android='280', WinUI='360'}"
                     >
                     <HorizontalStackLayout
-                        Margin="{OnPlatform Android='0,10,0,0', WinUI='20,15,0,0'}"
+                        Margin="{OnPlatform Android='0,10,0,0', WinUI='0,20,0,0'}"
                         >
                         <Entry
                             ReturnType="Done"
-                            Placeholder="XXXXXX"
+                            Placeholder="Password"
                             BackgroundColor="{StaticResource White}"
-                            Text="{Binding VerificationCode}"
+                            Text="{Binding Password}"
                             TextColor="{StaticResource Black}"
-                            FontSize="{OnPlatform WinUI='24'}"
+                            FontSize="{OnPlatform WinUI='16'}"
                             HorizontalTextAlignment="Center"
-                            MaxLength="6"
+                            MaxLength="32"
                             HeightRequest="40"
-                            WidthRequest="190"
+                            WidthRequest="{OnPlatform Android='270', WinUI='350'}"
                         />
                     </HorizontalStackLayout>
                 </Frame>
                 <Button
                     Command="{Binding SubmitButtonPressedCommand}"
-                    Text="Verify"
+                    Text="Submit"
                     TextColor="{StaticResource White}"
                     FontSize="Body"
                     HeightRequest="55"

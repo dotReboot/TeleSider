@@ -21,14 +21,16 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<StartPage>();
         builder.Services.AddSingleton<PhoneVerificationPage>();
-
+        builder.Services.AddSingleton<_2FAPage>();
 
         builder.Services.AddSingleton<StartPageViewModel>();
         builder.Services.AddSingleton<PhoneVerificationPageViewModel>();
-		
+        builder.Services.AddSingleton<_2FAPageViewModel>();
+
         builder.Services.AddScoped<StartPageViewModel>();
         builder.Services.AddScoped<PhoneVerificationPageViewModel>();
-        
+        builder.Services.AddScoped<_2FAPageViewModel>();
+
 
 #if DEBUG
         builder.Logging.AddDebug();

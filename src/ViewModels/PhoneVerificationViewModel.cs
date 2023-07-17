@@ -22,5 +22,10 @@ public partial class PhoneVerificationPageViewModel : ObservableObject
         {
             await Shell.Current.DisplayAlert("Invalid verification code", "Please, check the verification code and try again", "Ok", "Cancel", FlowDirection.LeftToRight);
         }
+        else
+        {
+            // check if the verification code is correct
+            await Shell.Current.GoToAsync(nameof(_2FAPage));
+        }
     }
 }
