@@ -29,7 +29,7 @@
                     Padding="5"
                     BackgroundColor="{StaticResource White}"
                     HeightRequest="{OnPlatform Android='50', WinUI='80'}"
-                    WidthRequest="{OnPlatform Android='280', WinUI='360'}"
+                    WidthRequest="{OnPlatform Android='280', WinUI='350'}"
                     >
                     <HorizontalStackLayout
                         Margin="{OnPlatform Android='0,10,0,0', WinUI='0,20,0,0'}"
@@ -42,9 +42,8 @@
                             TextColor="{StaticResource Black}"
                             FontSize="{OnPlatform WinUI='16'}"
                             HorizontalTextAlignment="Center"
-                            MaxLength="32"
                             HeightRequest="40"
-                            WidthRequest="{OnPlatform Android='270', WinUI='350'}"
+                            WidthRequest="{OnPlatform Android='270', WinUI='340'}"
                         />
                     </HorizontalStackLayout>
                 </Frame>
