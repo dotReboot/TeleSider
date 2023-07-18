@@ -14,7 +14,7 @@
             Margin="0,120"
             CornerRadius="15"
             BackgroundColor="{StaticResource White}"
-            HeightRequest="{OnPlatform Android='320', WinUI='350'}"
+            HeightRequest="{OnPlatform Android='340', WinUI='350'}"
             WidthRequest="{OnPlatform Android='350', WinUI='400'}"
             >
             <VerticalStackLayout>
@@ -27,13 +27,13 @@
                     HorizontalOptions="Center" />
                 <Label 
                     Margin="0,10,0,0"
-                    Text="Please, enter the code that was sent to you via SMS, Telegram or phone call:"
+                    Text="Enter the code that was sent to you via SMS, Telegram or phone call:"
                     FontSize="16"
                     TextColor="{StaticResource Secondary}"
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" />
                 <Frame 
-                    Margin="0,10,0,60"
+                    Margin="0,30,0,60"
                     Padding="5"
                     BackgroundColor="{StaticResource White}"
                     HeightRequest="{OnPlatform Android='50', WinUI='80'}"

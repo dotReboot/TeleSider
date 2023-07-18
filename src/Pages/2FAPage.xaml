@@ -14,25 +14,25 @@
             Margin="0,150"
             CornerRadius="15"
             BackgroundColor="{StaticResource White}"
-            HeightRequest="{OnPlatform Android='280', WinUI='300'}"
+            HeightRequest="{OnPlatform Android='310', WinUI='300'}"
             WidthRequest="{OnPlatform Android='350', WinUI='400'}"
             >
             <VerticalStackLayout>
                 <Label
-                    Text="Please, enter your Telegram password below:"
+                    Margin="0,10,0,0"
+                    Text="Enter your Telegram password below:"
                     FontSize="16"
                     TextColor="{StaticResource Secondary}"
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Center" />
+                    VerticalOptions="Center" />
                 <Frame 
-                    Margin="0,30,0,60"
+                    Margin="0,60,0,60"
                     Padding="5"
                     BackgroundColor="{StaticResource White}"
-                    HeightRequest="{OnPlatform Android='50', WinUI='80'}"
-                    WidthRequest="{OnPlatform Android='280', WinUI='350'}"
+                    HeightRequest="{OnPlatform Android='50', WinUI='50'}"
+                    WidthRequest="{OnPlatform Android='280', WinUI='310'}"
                     >
                     <HorizontalStackLayout
-                        Margin="{OnPlatform Android='0,10,0,0', WinUI='0,20,0,0'}"
+                        Margin="{OnPlatform Android='0,10,0,0', WinUI='0'}"
                         >
                         <Entry
                             ReturnType="Done"
@@ -43,7 +43,7 @@
                             FontSize="{OnPlatform WinUI='16'}"
                             HorizontalTextAlignment="Center"
                             HeightRequest="40"
-                            WidthRequest="{OnPlatform Android='270', WinUI='340'}"
+                            WidthRequest="{OnPlatform Android='270', WinUI='300'}"
                         />
                     </HorizontalStackLayout>
                 </Frame>
