@@ -7,6 +7,8 @@
     <Color x:Key="Primary">#111515</Color>
     <Color x:Key="Secondary">#60ABA8</Color>
     <Color x:Key="Tertiary">#F6F8FF</Color>
+    <Color x:Key="Quaternary">#76C4BA</Color>
+    <Color x:Key="Quinary">#60A3AB</Color>
     <Color x:Key="White">White</Color>
     <Color x:Key="Black">Black</Color>
     <Color x:Key="Gray100">#E1E1E1</Color>
@@ -20,6 +22,8 @@
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
     <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>
     <SolidColorBrush x:Key="TertiaryBrush" Color="{StaticResource Tertiary}"/>
+    <SolidColorBrush x:Key="QuaternaryBrush" Color="{StaticResource Quaternary}"/>
+    <SolidColorBrush x:Key="QuinaryBrush" Color="{StaticResource Quinary}"/>
     <SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource White}"/>
     <SolidColorBrush x:Key="BlackBrush" Color="{StaticResource Black}"/>
     <SolidColorBrush x:Key="Gray100Brush" Color="{StaticResource Gray100}"/>
