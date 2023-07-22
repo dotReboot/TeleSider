@@ -21,7 +21,7 @@ public partial class StartPageViewModel : ObservableObject
     [RelayCommand]
     public async Task SignInButtonPressed()
     {
-        if (CountryCode != null && PhoneNumber != null) {
+        if (!String.IsNullOrWhiteSpace(CountryCode) && !String.IsNullOrWhiteSpace(PhoneNumber)) {
             CountryCode = CountryCode.Replace(" ", "");
             PhoneNumber = PhoneNumber.Replace(" ", "");
             if (CountryCode.Length > 0 && PhoneNumber.Length >= 6)
