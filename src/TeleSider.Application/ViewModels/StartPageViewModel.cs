@@ -23,7 +23,8 @@ public partial class StartPageViewModel : ObservableObject
     [RelayCommand]
     public async Task SignInButtonPressed()
     {
-        if (!String.IsNullOrWhiteSpace(CountryCode) && !String.IsNullOrWhiteSpace(PhoneNumber)) {
+        if (!String.IsNullOrWhiteSpace(CountryCode) && !String.IsNullOrWhiteSpace(PhoneNumber))
+        {
             CountryCode = CountryCode.Replace(" ", "");
             PhoneNumber = PhoneNumber.Replace(" ", "");
             if (CountryCode.Length > 0 && PhoneNumber.Length >= 6)
@@ -37,16 +38,16 @@ public partial class StartPageViewModel : ObservableObject
                         // Asking the user to grant the required permission, if they won't - close the app
                         await PermissionManager.CheckAndRequestReadWrite();
                         try
-                            {
-                                await Client.Login($"+{FullPhoneNumber}");
-                                await NavigateToNumberVerificationPage();
-                            }
-                            catch (Exception ex) 
-                            {
-                                Debug.WriteLine(ex);
-                                await DisplayInvalidPhoneNumberAlert("Something went wrong while trying to sign you in. Please, try again");
-                                // remove a session 
-                            }
+                        {
+                            await Client.Login($"+{FullPhoneNumber}");
+                            await NavigateToNumberVerificationPage();
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine(ex);
+                            await DisplayInvalidPhoneNumberAlert("Something went wrong while trying to sign you in. Please, try again");
+                            // remove a session 
+                        }
                     }
                 }
                 else

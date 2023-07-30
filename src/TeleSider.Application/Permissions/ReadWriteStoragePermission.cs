@@ -1,4 +1,4 @@
-﻿public class ReadWriteStoragePermission : Permissions.BasePlatformPermission 
+﻿public class ReadWriteStoragePermission : Permissions.BasePlatformPermission
 {
 #if ANDROID
     public override (string androidPermission, bool isRuntime)[] RequiredPermissions =>
