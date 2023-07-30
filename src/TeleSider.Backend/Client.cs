@@ -1,6 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using TL;
+﻿using System.Diagnostics;
 using WTelegram;
 
 namespace BackEnd;
@@ -39,13 +37,11 @@ public static class Client
                 break;
             case "WinUI":
                 break;
-            case "iOS":
-                break;
             // Other platforms
             default:
                 throw new Exception("Platform is unknown");
         }
 
     }
-    private static void DebugLogger(int level, string message) => System.Diagnostics.Debug.WriteLine(message);
+    private static void DebugLogger(int level, string message) => Debug.WriteLine(message);
 }

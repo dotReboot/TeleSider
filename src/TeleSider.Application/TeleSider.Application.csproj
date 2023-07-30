@@ -50,7 +50,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Models\" />
 	  <Folder Include="Resources\Raw\" />
 	  <Folder Include="Resources\Splash\" />
 	</ItemGroup>
