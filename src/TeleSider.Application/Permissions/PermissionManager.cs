@@ -18,7 +18,7 @@ public static class PermissionManager
                 if (status != PermissionStatus.Granted)
                 {
                     await Shell.Current.DisplayAlert("Permission is required", "Sorry, " +
-                        "you did not grant the required permission. If you want to grant it later - " +
+                        "you did not grant the required permission.\nIf you want to grant it later -\n" +
                         """Go to "Settings -> Apps -> Permissions" and allow all required permissions. Now the application will close itself""", "OK");
                     App.Current.Quit();
                 }
