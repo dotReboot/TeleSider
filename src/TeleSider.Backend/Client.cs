@@ -8,10 +8,12 @@ public static class Client
     public static string? platform = null;
     private static string? _sessionPath;
     public static string username = "";
-    static Client ()
+
+    static Client()
     {
         Helpers.Log = DebugLogger;
     }
+
     public static async Task Login(string phoneNumber)
     {
         if (client != null)
@@ -23,16 +25,27 @@ public static class Client
             SetSessionPath();
         }
         client = new WTelegram.Client(1, "1", _sessionPath);
-        await DoLogin(phoneNumber);
+        await DoLogin(phoneNumber, "verification_code");
     }
 
-    public static async Task DoLogin(string loginInfo)
+    public static async Task DoLogin(string loginInfo, string? requiredItem)
     {
         while (client.User == null)
             switch (await client.Login(loginInfo))
             {
-                case "verification_code": return;
-                case "password": return;
+                case "verification_code": 
+                {
+                    if (requiredItem == "verification_code")
+                        return;
+                    else
+                        throw new Exception("Invalid Verification Code");
+                }
+                case "password": {
+                        if (requiredItem == "password")
+                            return;
+                        else
+                            throw new Exception("Invalid Password");
+                    };
                 default: loginInfo = null; break;
             }
         username = client.User.ToString();
@@ -50,7 +63,7 @@ public static class Client
             default:
                 throw new Exception("Platform is unknown");
         }
-
     }
+
     private static void DebugLogger(int level, string message) => Debug.WriteLine(message);
 }

@@ -3,6 +3,7 @@ using System;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using TeleSider.Pages;
+using BackEnd;
 
 namespace TeleSider.ViewModels;
 
@@ -23,7 +24,7 @@ public partial class _2FAPageViewModel : ObservableObject
         {
             try
             {
-                await Client.DoLogin(Password);
+                await Client.DoLogin(Password, null);
                 await Shell.Current.GoToAsync(nameof(HomePage));
             }
             catch (Exception ex)

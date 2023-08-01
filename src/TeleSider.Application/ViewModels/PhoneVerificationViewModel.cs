@@ -3,6 +3,7 @@ using System.Diagnostics;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using TeleSider.Pages;
+using BackEnd;
 
 namespace TeleSider.ViewModels;
 
@@ -26,7 +27,7 @@ public partial class PhoneVerificationPageViewModel : ObservableObject
         {
             try
             {
-                await Client.DoLogin(VerificationCode);
+                await Client.DoLogin(VerificationCode, "password");
                 await Shell.Current.GoToAsync(nameof(_2FAPage));
             }
             catch (Exception ex)
