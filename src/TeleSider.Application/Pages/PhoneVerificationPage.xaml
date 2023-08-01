@@ -27,7 +27,7 @@
                     HorizontalOptions="Center" />
                 <Label 
                     Margin="0,10,0,0"
-                    Text="Enter the code that was sent to you via SMS, Telegram or phone call:"
+                    Text="Enter the code that was sent to you via Telegram:"
                     FontSize="16"
                     TextColor="{StaticResource Secondary}"
                     VerticalOptions="Center" 
