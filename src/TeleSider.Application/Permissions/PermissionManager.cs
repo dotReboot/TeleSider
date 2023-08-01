@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.ApplicationModel;
-using TeleSider;
+﻿using TeleSider;
 
 public static class PermissionManager
 {

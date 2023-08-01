@@ -1,9 +1,8 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using TeleSider.Pages;
-using BackEnd;
 
 namespace TeleSider.ViewModels;
 
