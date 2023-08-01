@@ -1,4 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System.Diagnostics;
+using System;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using TeleSider.Pages;
 using BackEnd;
@@ -20,9 +22,16 @@ public partial class _2FAPageViewModel : ObservableObject
         }
         else
         {
-            // check if the password is correct
-            await Client.DoLogin(Password);
-            await Shell.Current.GoToAsync(nameof(HomePage));
+            try
+            {
+                await Client.DoLogin(Password);
+                await Shell.Current.GoToAsync(nameof(HomePage));
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                await Shell.Current.DisplayAlert("Invalid password", "Please, try entering your password again", "Ok", "Cancel", FlowDirection.LeftToRight);
+            }
         }
     }
 }

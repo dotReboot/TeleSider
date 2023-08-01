@@ -6,17 +6,26 @@ using WTelegram;
 namespace BackEnd;
 public static class Client
 {
-    private static WTelegram.Client client = null;
-    public static string platform = null;
+    private static WTelegram.Client? client = null;
+    public static string? platform = null;
     private static string? _sessionPath;
     public static string username = "";
-    public static async Task Login(string phoneNumber)
+    static Client ()
     {
         Helpers.Log = DebugLogger;
-        SetSessionPath();
+    }
+    public static async Task Login(string phoneNumber)
+    {
+        if (client != null)
+        {
+            client.Dispose();
+        }
+        else
+        {
+            SetSessionPath();
+        }
         client = new WTelegram.Client(1, "1", _sessionPath);
         await DoLogin(phoneNumber);
-        //client.Dispose(); // the client must be disposed when you're done running your userbot.
     }
 
     public static async Task DoLogin(string loginInfo)

@@ -1,4 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System;
+using System.Diagnostics;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using TeleSider.Pages;
 using BackEnd;
@@ -23,9 +25,16 @@ public partial class PhoneVerificationPageViewModel : ObservableObject
         }
         else
         {
-            // check if the verification code is correct
-            await Client.DoLogin(VerificationCode);
-            await Shell.Current.GoToAsync(nameof(_2FAPage));
+            try
+            {
+                await Client.DoLogin(VerificationCode);
+                await Shell.Current.GoToAsync(nameof(_2FAPage));
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                await Shell.Current.DisplayAlert("Invalid verification code", "Please, check the verification code and try again", "Ok", "Cancel", FlowDirection.LeftToRight);
+            }
         }
     }
 }
