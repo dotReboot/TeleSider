@@ -54,6 +54,7 @@
                             MaxLength="5"
                             HeightRequest="40"
                             WidthRequest="190"
+                            ReturnCommand="{Binding SubmitButtonPressedCommand}"
                         />
                     </HorizontalStackLayout>
                 </Frame>

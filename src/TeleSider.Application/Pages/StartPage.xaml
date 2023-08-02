@@ -91,6 +91,7 @@
                             MaxLength="15"
                             HeightRequest="40"
                             WidthRequest="190"
+                            ReturnCommand="{Binding SignInButtonPressedCommand}"
                         />
                         </HorizontalStackLayout>
                     </Frame>

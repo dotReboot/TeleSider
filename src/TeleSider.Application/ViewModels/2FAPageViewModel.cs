@@ -16,6 +16,9 @@ public partial class _2FAPageViewModel : ObservableObject
     [RelayCommand]
     public async Task SubmitButtonPressed()
     {
+#if ANDROID
+        Platforms.KeyboardManager.HideKeyboard();
+#endif
         if (String.IsNullOrWhiteSpace(Password))
         {
             await Shell.Current.DisplayAlert("Invalid password", "Please, try entering your password again", "Ok", "Cancel", FlowDirection.LeftToRight);

@@ -44,6 +44,7 @@
                             HorizontalTextAlignment="Center"
                             HeightRequest="40"
                             WidthRequest="{OnPlatform Android='270', WinUI='300'}"
+                            ReturnCommand="{Binding SubmitButtonPressedCommand}"
                         />
                     </HorizontalStackLayout>
                 </Frame>

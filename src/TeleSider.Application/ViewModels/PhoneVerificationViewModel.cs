@@ -19,6 +19,9 @@ public partial class PhoneVerificationPageViewModel : ObservableObject
     [RelayCommand]
     public async Task SubmitButtonPressed()
     {
+#if ANDROID
+        Platforms.KeyboardManager.HideKeyboard();
+#endif
         if (VerificationCode == null || VerificationCode.Length < 5 || !VerificationCode.All(Char.IsDigit))
         {
             await Shell.Current.DisplayAlert("Invalid verification code", "Please, check the verification code and try again", "Ok", "Cancel", FlowDirection.LeftToRight);

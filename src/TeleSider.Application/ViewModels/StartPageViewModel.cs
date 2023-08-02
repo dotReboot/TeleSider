@@ -23,6 +23,9 @@ public partial class StartPageViewModel : ObservableObject
     [RelayCommand]
     public async Task SignInButtonPressed()
     {
+#if ANDROID
+        Platforms.KeyboardManager.HideKeyboard();
+#endif
         if (!String.IsNullOrWhiteSpace(CountryCode) && !String.IsNullOrWhiteSpace(PhoneNumber))
         {
             CountryCode = CountryCode.Replace(" ", "");
