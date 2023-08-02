@@ -9,5 +9,4 @@
     <ShellContent
         ContentTemplate="{DataTemplate local:StartPage}"
         Route="StartPage" />
-
 </Shell>

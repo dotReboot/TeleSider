@@ -47,7 +47,6 @@ public partial class StartPageViewModel : ObservableObject
                         }
                         catch (Exception ex)
                         {
-                            Debug.WriteLine(ex);
                             await DisplayInvalidPhoneNumberAlert("Something went wrong while trying to sign you in. Please, try again");
                             // remove a session 
                         }

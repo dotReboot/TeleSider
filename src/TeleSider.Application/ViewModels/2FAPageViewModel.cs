@@ -32,9 +32,11 @@ public partial class _2FAPageViewModel : ObservableObject
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
                 await Shell.Current.DisplayAlert("Invalid password", "Please, try entering your password again", "Ok", "Cancel", FlowDirection.LeftToRight);
             }
         }
     }
+
+    [RelayCommand]
+    public async Task BackButtonPressed() => await Shell.Current.GoToAsync("../../");
 }

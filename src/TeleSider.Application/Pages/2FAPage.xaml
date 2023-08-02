@@ -6,6 +6,9 @@
              x:DataType="viewmodel:_2FAPageViewModel"
              x:Class="TeleSider.Pages._2FAPage"
              Title="Enter your 2FA Password">
+    <Shell.BackButtonBehavior>
+            <BackButtonBehavior Command="{Binding BackButtonPressedCommand}"/>
+    </Shell.BackButtonBehavior>
     <ContentPage.Behaviors>
         <toolkit:StatusBarBehavior StatusBarColor="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Primary}}"/>
     </ContentPage.Behaviors>

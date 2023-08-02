@@ -35,7 +35,6 @@ public partial class PhoneVerificationPageViewModel : ObservableObject
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
                 await Shell.Current.DisplayAlert("Invalid verification code", "Please, check the verification code and try again", "Ok", "Cancel", FlowDirection.LeftToRight);
             }
         }
