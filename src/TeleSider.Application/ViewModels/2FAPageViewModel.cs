@@ -11,10 +11,10 @@ public partial class _2FAPageViewModel : ObservableObject
 {
 
     [ObservableProperty]
-    public string password = null;
+    private string password = null;
 
     [RelayCommand]
-    public async Task SubmitButtonPressed()
+    private async Task SubmitButtonPressed()
     {
 #if ANDROID
         Platforms.KeyboardManager.HideKeyboard();
@@ -38,5 +38,5 @@ public partial class _2FAPageViewModel : ObservableObject
     }
 
     [RelayCommand]
-    public async Task BackButtonPressed() => await Shell.Current.GoToAsync("../../");
+    private async Task BackButtonPressed() => await Shell.Current.GoToAsync("../../");
 }

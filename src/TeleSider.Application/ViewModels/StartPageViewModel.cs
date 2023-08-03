@@ -9,19 +9,19 @@ namespace TeleSider.ViewModels;
 public partial class StartPageViewModel : ObservableObject
 {
     [ObservableProperty]
-    public string fullPhoneNumber = null;
+    private string fullPhoneNumber = null;
 
     [ObservableProperty]
-    public string countryCode = null;
+    private string countryCode = null;
 
     [ObservableProperty]
-    public string phoneNumber = null;
+    private string phoneNumber = null;
 
     [RelayCommand]
-    public async Task TapSignUp(string url) => await Launcher.OpenAsync(url);
+    private async Task TapSignUp(string url) => await Launcher.OpenAsync(url);
 
     [RelayCommand]
-    public async Task SignInButtonPressed()
+    private async Task SignInButtonPressed()
     {
 #if ANDROID
         Platforms.KeyboardManager.HideKeyboard();

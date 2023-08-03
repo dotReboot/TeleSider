@@ -11,13 +11,13 @@ namespace TeleSider.ViewModels;
 public partial class PhoneVerificationPageViewModel : ObservableObject
 {
     [ObservableProperty]
-    string phoneNumber;
+    private string phoneNumber;
 
     [ObservableProperty]
-    public string verificationCode = null;
+    private string verificationCode = null;
 
     [RelayCommand]
-    public async Task SubmitButtonPressed()
+    private async Task SubmitButtonPressed()
     {
 #if ANDROID
         Platforms.KeyboardManager.HideKeyboard();

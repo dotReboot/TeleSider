@@ -8,6 +8,8 @@ public static class Client
     public static string? platform = null;
     private static string? _sessionPath;
     public static string username = "";
+    private static readonly int apiID = 1;
+    private static readonly string apiHash = "1";
 
     static Client()
     {
@@ -24,7 +26,7 @@ public static class Client
         {
             SetSessionPath();
         }
-        client = new WTelegram.Client(1, "1", _sessionPath);
+        client = new WTelegram.Client(apiID, apiHash, _sessionPath);
         await DoLogin(phoneNumber, "verification_code");
     }
 

@@ -6,5 +6,5 @@ namespace TeleSider.ViewModels;
 public partial class HomePageViewModel : ObservableObject
 {
     [ObservableProperty]
-    public string username = Client.username;
+    private string username = Client.username;
 }
