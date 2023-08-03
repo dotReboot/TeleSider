@@ -39,6 +39,7 @@
                         >
                         <Entry
                             ReturnType="Done"
+                            IsPassword="True"
                             Placeholder="Password"
                             BackgroundColor="{StaticResource White}"
                             Text="{Binding Password}"

@@ -30,8 +30,15 @@ public partial class PhoneVerificationPageViewModel : ObservableObject
         {
             try
             {
-                await Client.DoLogin(VerificationCode, "password");
-                await Shell.Current.GoToAsync(nameof(_2FAPage));
+                string requiredItem = await Client.DoLogin(VerificationCode, "password");
+                if (requiredItem == "password") 
+                {
+                    await Shell.Current.GoToAsync(nameof(_2FAPage));
+                }
+                else
+                {
+                    await Shell.Current.GoToAsync(nameof(HomePage));
+                }
             }
             catch (Exception ex)
             {

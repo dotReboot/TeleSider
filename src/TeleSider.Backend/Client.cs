@@ -28,7 +28,7 @@ public static class Client
         await DoLogin(phoneNumber, "verification_code");
     }
 
-    public static async Task DoLogin(string loginInfo, string? requiredItem)
+    public static async Task<string> DoLogin(string loginInfo, string? requiredItem)
     {
         while (client.User == null)
             switch (await client.Login(loginInfo))
@@ -36,19 +36,21 @@ public static class Client
                 case "verification_code": 
                 {
                     if (requiredItem == "verification_code")
-                        return;
+                        return requiredItem;
                     else
                         throw new Exception("Invalid Verification Code");
                 }
-                case "password": {
-                        if (requiredItem == "password")
-                            return;
-                        else
-                            throw new Exception("Invalid Password");
-                    };
+                case "password": 
+                {
+                    if (requiredItem == "password")
+                        return requiredItem;
+                    else
+                        throw new Exception("Invalid Password");
+                }
                 default: loginInfo = null; break;
             }
         username = client.User.ToString();
+        return username;
     }
     private static void SetSessionPath()
     {
