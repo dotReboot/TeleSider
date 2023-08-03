@@ -40,7 +40,7 @@ public partial class PhoneVerificationPageViewModel : ObservableObject
                     await Shell.Current.GoToAsync(nameof(HomePage));
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 await Shell.Current.DisplayAlert("Invalid verification code", "Please, check the verification code and try again", "Ok", "Cancel", FlowDirection.LeftToRight);
             }

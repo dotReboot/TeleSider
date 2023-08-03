@@ -30,7 +30,7 @@ public partial class _2FAPageViewModel : ObservableObject
                 await Client.DoLogin(Password, null);
                 await Shell.Current.GoToAsync(nameof(HomePage));
             }
-            catch (Exception ex)
+            catch
             {
                 await Shell.Current.DisplayAlert("Invalid password", "Please, try entering your password again", "Ok", "Cancel", FlowDirection.LeftToRight);
             }

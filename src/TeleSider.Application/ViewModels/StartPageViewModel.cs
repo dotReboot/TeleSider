@@ -45,7 +45,7 @@ public partial class StartPageViewModel : ObservableObject
                             await Client.Login($"+{FullPhoneNumber}");
                             await NavigateToNumberVerificationPage();
                         }
-                        catch (Exception ex)
+                        catch
                         {
                             await DisplayInvalidPhoneNumberAlert("Something went wrong while trying to sign you in. Please, try again");
                             // remove a session 
