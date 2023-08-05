@@ -37,5 +37,12 @@ public partial class _2FAPageViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private async Task BackButtonPressed() => await Shell.Current.GoToAsync("../../");
+    private async Task BackButtonPressed()
+    {
+        bool request = await Shell.Current.DisplayAlert("Navigating back", "Do you want to abort the login operation?", "Yes", "Cancel", FlowDirection.LeftToRight);
+        if (request)
+        {
+            await Shell.Current.Navigation.PopToRootAsync();
+        }
+    }
 }
