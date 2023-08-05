@@ -2,17 +2,11 @@
 using CommunityToolkit.Mvvm.Input;
 using TeleSider.Pages;
 using BackEnd;
-using System.Diagnostics;
 
 namespace TeleSider.ViewModels;
 
 public partial class StartPageViewModel : ObservableObject
 {
-    [ObservableProperty]
-    private string fullPhoneNumber = null;
-
-    [ObservableProperty]
-    private string countryCode = null;
 
     [ObservableProperty]
     private string phoneNumber = null;
@@ -26,23 +20,21 @@ public partial class StartPageViewModel : ObservableObject
 #if ANDROID
         Platforms.KeyboardManager.HideKeyboard();
 #endif
-        if (!String.IsNullOrWhiteSpace(CountryCode) && !String.IsNullOrWhiteSpace(PhoneNumber))
+        if (!String.IsNullOrWhiteSpace(PhoneNumber))
         {
-            CountryCode = CountryCode.Replace(" ", "");
             PhoneNumber = PhoneNumber.Replace(" ", "");
-            if (CountryCode.Length > 0 && PhoneNumber.Length >= 6)
+            if (PhoneNumber.Length >= 7)
             {
-                FullPhoneNumber = CountryCode + PhoneNumber;
-                if (FullPhoneNumber.All(Char.IsDigit))
+                if (PhoneNumber.All(Char.IsDigit))
                 {
-                    bool request = await Shell.Current.DisplayAlert("Is this the correct number?", $"+{FullPhoneNumber}", "Yes", "Edit", FlowDirection.LeftToRight);
+                    bool request = await Shell.Current.DisplayAlert("Is this the correct number?", $"+{PhoneNumber}", "Yes", "Edit", FlowDirection.LeftToRight);
                     if (request)
                     {
                         // Asking the user to grant the required permission, if they won't - close the app
                         await PermissionManager.CheckAndRequestReadWrite();
                         try
                         {
-                            await Client.Login($"+{FullPhoneNumber}");
+                            await Client.Login($"+{PhoneNumber}");
                             await NavigateToNumberVerificationPage();
                         }
                         catch
@@ -69,7 +61,7 @@ public partial class StartPageViewModel : ObservableObject
     }
     // %2b means "+" in url, it is the only way to pass the phone number with a "+" sign
     [RelayCommand]
-    private async Task NavigateToNumberVerificationPage() => await Shell.Current.GoToAsync($"{nameof(PhoneVerificationPage)}?PhoneNumber=%2b{FullPhoneNumber}");
+    private async Task NavigateToNumberVerificationPage() => await Shell.Current.GoToAsync($"{nameof(PhoneVerificationPage)}?PhoneNumber=%2b{PhoneNumber}");
 
     private async Task DisplayInvalidPhoneNumberAlert(string details)
     {
