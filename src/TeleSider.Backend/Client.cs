@@ -9,7 +9,7 @@ public static class Client
     private static string? _sessionPath;
     public static string username = "";
     private static readonly int apiID = 1;
-    private static readonly string apiHash = "1";
+    private static readonly string? apiHash = null;
 
     static Client()
     {
@@ -25,6 +25,10 @@ public static class Client
         else
         {
             SetSessionPath();
+        }
+        if (apiID == 1 || apiHash == null)
+        {
+            throw new Exception("Invalid apiID or apiHash");
         }
         client = new WTelegram.Client(apiID, apiHash, _sessionPath);
         await DoLogin(phoneNumber, "verification_code");
