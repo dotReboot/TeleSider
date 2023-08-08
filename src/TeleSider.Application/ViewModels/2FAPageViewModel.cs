@@ -12,6 +12,9 @@ public partial class _2FAPageViewModel : ObservableObject
     [ObservableProperty]
     private string password = null;
 
+    [ObservableProperty]
+    private string submitButtonText = "Submit";
+
     [RelayCommand]
     private async Task SubmitButtonPressed()
     {
@@ -26,12 +29,17 @@ public partial class _2FAPageViewModel : ObservableObject
         {
             try
             {
+                SetSubmitButtonText(true);
                 await Client.DoLogin(Password, null);
                 await Shell.Current.GoToAsync(nameof(HomePage));
             }
             catch
             {
                 await Shell.Current.DisplayAlert("Invalid password", "Please, try entering your password again", "Ok", "Cancel", FlowDirection.LeftToRight);
+            }
+            finally
+            {
+                SetSubmitButtonText();
             }
         }
     }
@@ -44,5 +52,9 @@ public partial class _2FAPageViewModel : ObservableObject
         {
             await Shell.Current.Navigation.PopToRootAsync();
         }
+    }
+    private void SetSubmitButtonText(bool isloading = false)
+    {
+        SubmitButtonText = isloading ? "Loading..." : "Submit";
     }
 }

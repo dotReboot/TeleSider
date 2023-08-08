@@ -60,7 +60,7 @@
                 </Frame>
                 <Button
                     Command="{Binding SubmitButtonPressedCommand}"
-                    Text="Verify"
+                    Text="{Binding VerifyButtonText}"
                     TextColor="{StaticResource White}"
                     FontSize="Body"
                     HeightRequest="55"

@@ -54,7 +54,7 @@
                 </Frame>
                 <Button
                     Command="{Binding SubmitButtonPressedCommand}"
-                    Text="Submit"
+                    Text="{Binding SubmitButtonText}"
                     TextColor="{StaticResource White}"
                     FontSize="Body"
                     HeightRequest="55"

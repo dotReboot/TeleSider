@@ -13,6 +13,9 @@ public partial class PhoneVerificationPageViewModel : ObservableObject
     private string phoneNumber;
 
     [ObservableProperty]
+    private string verifyButtonText = "Verify";
+
+    [ObservableProperty]
     private string verificationCode = null;
 
     [RelayCommand]
@@ -29,6 +32,7 @@ public partial class PhoneVerificationPageViewModel : ObservableObject
         {
             try
             {
+                SetVerifyButtonText(true);
                 string requiredItem = await Client.DoLogin(VerificationCode, "password");
                 if (requiredItem == "password") 
                 {
@@ -43,6 +47,14 @@ public partial class PhoneVerificationPageViewModel : ObservableObject
             {
                 await Shell.Current.DisplayAlert("Invalid verification code", "Please, check the verification code and try again", "Ok", "Cancel", FlowDirection.LeftToRight);
             }
+            finally
+            {
+                SetVerifyButtonText();
+            }
         }
+    }
+    private void SetVerifyButtonText(bool isloading = false)
+    {
+        VerifyButtonText = isloading ? "Verifying..." : "Verify";
     }
 }

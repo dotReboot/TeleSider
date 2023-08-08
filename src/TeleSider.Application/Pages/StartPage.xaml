@@ -76,7 +76,7 @@
                 </Frame>
                 <Button
                     Command="{Binding SignInButtonPressedCommand}"
-                    Text="Sign in"
+                    Text="{Binding SignInButtonText}"
                     TextColor="{StaticResource White}"
                     FontSize="Body"
                     HeightRequest="55"

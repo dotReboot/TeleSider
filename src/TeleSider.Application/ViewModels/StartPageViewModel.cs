@@ -7,6 +7,8 @@ namespace TeleSider.ViewModels;
 
 public partial class StartPageViewModel : ObservableObject
 {
+    [ObservableProperty]
+    private string signInButtonText = "Sign In";
 
     [ObservableProperty]
     private string phoneNumber = null;
@@ -34,12 +36,17 @@ public partial class StartPageViewModel : ObservableObject
                         await PermissionManager.CheckAndRequestReadWrite();
                         try
                         {
+                            SetSignInButtonText(true);
                             await Client.Login($"+{PhoneNumber}");
                             await NavigateToNumberVerificationPage();
                         }
                         catch
                         {
                             await DisplayInvalidPhoneNumberAlert("Something went wrong while trying to sign you in. Please, try again");
+                        }
+                        finally
+                        {
+                            SetSignInButtonText();
                         }
                     }
                 }
@@ -65,5 +72,9 @@ public partial class StartPageViewModel : ObservableObject
     private async Task DisplayInvalidPhoneNumberAlert(string details)
     {
         await Shell.Current.DisplayAlert("Invalid phone number", details, "Ok", "Cancel", FlowDirection.LeftToRight);
+    }
+    private void SetSignInButtonText(bool isloading=false)
+    {
+        SignInButtonText = isloading ? "Loading..." : "Sign In";
     }
 }
