@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using WTelegram;
 
-namespace BackEnd;
+namespace Backend;
 public static class Client
 {
     private static WTelegram.Client? client = null;

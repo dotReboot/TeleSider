@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using TeleSider.Pages;
-using BackEnd;
+using Backend;
 
 namespace TeleSider.ViewModels;
 

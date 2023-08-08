@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Logging;
 using TeleSider.Pages;
 using TeleSider.ViewModels;
-using BackEnd;
 
 namespace TeleSider;
 
@@ -34,11 +33,6 @@ public static class MauiProgram
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
-        SetPlatform();
-		return builder.Build();
+        return builder.Build();
 	}
-    private static void SetPlatform()
-    {
-        Client.platform = DeviceInfo.Current.Platform.ToString();
-    }
 }

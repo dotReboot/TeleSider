@@ -1,4 +1,6 @@
-﻿namespace TeleSider;
+﻿using Backend;
+
+namespace TeleSider;
 
 public partial class App : Application
 {
@@ -6,5 +8,11 @@ public partial class App : Application
     {
         InitializeComponent();
         MainPage = new AppShell();
+        SetPlatform();
+    }
+
+    private static void SetPlatform()
+    {
+        Client.platform = DeviceInfo.Current.Platform.ToString();
     }
 }
