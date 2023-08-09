@@ -13,10 +13,6 @@
     </ContentPage.Behaviors>
     <VerticalStackLayout BackgroundColor="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Primary}}">
         <Label 
-            Text="Welcome to TeleSider!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Label 
             Text="{Binding Username}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />

@@ -38,7 +38,14 @@ public partial class StartPageViewModel : ObservableObject
                         {
                             SetSignInButtonText(true);
                             await Client.Login($"+{PhoneNumber}");
-                            await NavigateToNumberVerificationPage();
+                            if (Client.username != "")
+                            {
+                                await Shell.Current.GoToAsync(nameof(HomePage));
+                            }
+                            else
+                            {
+                                await NavigateToNumberVerificationPage();
+                            }
                         }
                         catch
                         {
