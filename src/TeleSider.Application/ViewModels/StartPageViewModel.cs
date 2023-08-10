@@ -38,14 +38,7 @@ public partial class StartPageViewModel : ObservableObject
                         {
                             SetSignInButtonText(true);
                             await Client.Login($"+{PhoneNumber}");
-                            if (Client.username != "")
-                            {
-                                await Shell.Current.GoToAsync(nameof(HomePage));
-                            }
-                            else
-                            {
-                                await NavigateToNumberVerificationPage();
-                            }
+                            await NavigateToNumberVerificationPage();
                         }
                         catch
                         {
@@ -73,12 +66,20 @@ public partial class StartPageViewModel : ObservableObject
         }
     }
     // %2b means "+" in url, it is the only way to pass the phone number with a "+" sign
-    [RelayCommand]
     private async Task NavigateToNumberVerificationPage() => await Shell.Current.GoToAsync($"{nameof(PhoneVerificationPage)}?PhoneNumber=%2b{PhoneNumber}");
 
     private async Task DisplayInvalidPhoneNumberAlert(string details)
     {
         await Shell.Current.DisplayAlert("Invalid phone number", details, "Ok", "Cancel", FlowDirection.LeftToRight);
+    }
+    [RelayCommand]
+    private async Task LoginTheExistingUser()
+    {
+        // Resume the previous session
+        if (Client.username != "")
+        {
+            await Shell.Current.GoToAsync(nameof(HomePage));
+        } 
     }
     private void SetSignInButtonText(bool isloading=false)
     {

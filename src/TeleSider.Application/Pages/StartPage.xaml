@@ -7,6 +7,9 @@
              x:Class="TeleSider.Pages.StartPage">
     <ContentPage.Behaviors>
         <toolkit:StatusBarBehavior StatusBarColor="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Primary}}"/>
+        <toolkit:EventToCommandBehavior
+        EventName="Appearing"
+        Command="{Binding LoginTheExistingUserCommand}" />
     </ContentPage.Behaviors>
     <VerticalStackLayout Spacing="5" Padding="0,20,0,0" BackgroundColor="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Primary}}">
         <Label

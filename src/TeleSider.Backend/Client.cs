@@ -13,10 +13,15 @@ public static class Client
 
     static Client()
     {
+        if (apiID == 1 || apiHash == null)
+        {
+            throw new Exception("Invalid apiID or apiHash");
+        }
+        client = new WTelegram.Client(apiID, apiHash, _sessionPath);
         Helpers.Log = DebugLogger;
     }
 
-    public static async Task Login(string phoneNumber)
+    public static async Task Login(string? phoneNumber=null)
     {
         if (client != null)
         {
@@ -26,15 +31,11 @@ public static class Client
         {
             SetSessionPath();
         }
-        if (apiID == 1 || apiHash == null)
-        {
-            throw new Exception("Invalid apiID or apiHash");
-        }
-        client = new WTelegram.Client(apiID, apiHash, _sessionPath);
         await DoLogin(phoneNumber, "verification_code");
     }
 
-    public static async Task<string> DoLogin(string loginInfo, string? requiredItem)
+    // returns the required Item, null if the user is logged in
+    public static async Task<string?> DoLogin(string? loginInfo, string? requiredItem)
     {
         while (client.User == null)
             switch (await client.Login(loginInfo))
@@ -53,10 +54,13 @@ public static class Client
                     else
                         throw new Exception("Invalid Password");
                 }
-                default: loginInfo = null; break;
+                default:
+                {
+                    break;
+                }
             }
         username = client.User.ToString();
-        return username;
+        return null;
     }
     private static void SetSessionPath()
     {
@@ -72,6 +76,5 @@ public static class Client
                 throw new Exception("Platform is unknown");
         }
     }
-
     private static void DebugLogger(int level, string message) => Debug.WriteLine(message);
 }
