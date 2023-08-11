@@ -4,8 +4,7 @@ using WTelegram;
 namespace Backend;
 public static class Client
 {
-    private static WTelegram.Client? client = null;
-    public static string? platform = null;
+    private static WTelegram.Client? client;
     private static string? _sessionPath;
     public static string username = "";
     private static readonly int apiID = 1;
@@ -17,20 +16,13 @@ public static class Client
         {
             throw new Exception("Invalid apiID or apiHash");
         }
-        client = new WTelegram.Client(apiID, apiHash, _sessionPath);
         Helpers.Log = DebugLogger;
     }
 
     public static async Task Login(string? phoneNumber=null)
     {
-        if (client != null)
-        {
-            client.Dispose();
-        }
-        else
-        {
-            SetSessionPath();
-        }
+        client?.Dispose();
+        CreateClientIfNeeded();
         await DoLogin(phoneNumber, "verification_code");
     }
 
@@ -62,7 +54,7 @@ public static class Client
         username = client.User.ToString();
         return null;
     }
-    private static void SetSessionPath()
+    public static void SetSessionPath(string platform)
     {
         switch (platform)
         {
@@ -73,8 +65,12 @@ public static class Client
                 break;
             // Other platforms
             default:
-                throw new Exception("Platform is unknown");
+                throw new Exception("The platform is unknown");
         }
+    }
+    private static void CreateClientIfNeeded()
+    {
+        client ??= new WTelegram.Client(apiID, apiHash, _sessionPath);
     }
     private static void DebugLogger(int level, string message) => Debug.WriteLine(message);
 }

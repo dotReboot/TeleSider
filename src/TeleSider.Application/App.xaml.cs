@@ -8,11 +8,6 @@ public partial class App : Application
     {
         InitializeComponent();
         MainPage = new AppShell();
-        SetPlatform();
-    }
-
-    private static void SetPlatform()
-    {
-        Client.platform = DeviceInfo.Current.Platform.ToString();
+        Client.SetSessionPath(DeviceInfo.Current.Platform.ToString());
     }
 }
