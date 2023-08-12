@@ -7,12 +7,12 @@ public static class Client
     private static WTelegram.Client? client;
     private static string? _sessionPath;
     public static string username = "";
-    private static readonly int apiID = int.Parse(Environment.GetEnvironmentVariable("apiID"));
-    private static readonly string apiHash = Environment.GetEnvironmentVariable("apiHash");
+    private static readonly string? apiID = Environment.GetEnvironmentVariable("apiID");
+    private static readonly string? apiHash = Environment.GetEnvironmentVariable("apiHash");
 
     static Client()
     {
-        if (apiID == 1 || apiHash == null)
+        if (apiID == null || apiHash == null)
         {
             throw new Exception("Invalid apiID or apiHash");
         }
@@ -70,7 +70,7 @@ public static class Client
     }
     private static void CreateClientIfNeeded()
     {
-        client ??= new WTelegram.Client(apiID, apiHash, _sessionPath);
+        client ??= new WTelegram.Client(int.Parse(apiID), apiHash, _sessionPath);
     }
     private static void DebugLogger(int level, string message) => Debug.WriteLine(message);
 }
