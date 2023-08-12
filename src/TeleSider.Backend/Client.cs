@@ -7,8 +7,8 @@ public static class Client
     private static WTelegram.Client? client;
     private static string? _sessionPath;
     public static string username = "";
-    private static readonly int apiID = 1;
-    private static readonly string? apiHash = null;
+    private static readonly int apiID = int.Parse(Environment.GetEnvironmentVariable("apiID"));
+    private static readonly string apiHash = Environment.GetEnvironmentVariable("apiHash");
 
     static Client()
     {
