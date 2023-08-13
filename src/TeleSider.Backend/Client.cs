@@ -2,26 +2,17 @@
 using WTelegram;
 
 namespace Backend;
-public static class Client
+public static partial class Client
 {
-    private static WTelegram.Client? client;
+    private static WTelegram.Client? _client;
     private static string? _sessionPath;
     public static string username = "";
-    private static readonly string? apiID = Environment.GetEnvironmentVariable("apiID");
-    private static readonly string? apiHash = Environment.GetEnvironmentVariable("apiHash");
-
-    static Client()
-    {
-        if (apiID == null || apiHash == null)
-        {
-            throw new Exception("Invalid apiID or apiHash");
-        }
-        Helpers.Log = DebugLogger;
-    }
+    private static readonly int apiID;
+    private static readonly string apiHash;
 
     public static async Task Login(string? phoneNumber=null)
     {
-        client?.Dispose();
+        _client?.Dispose();
         CreateClientIfNeeded();
         await DoLogin(phoneNumber, "verification_code");
     }
@@ -29,8 +20,8 @@ public static class Client
     // returns the required Item, null if the user is logged in
     public static async Task<string?> DoLogin(string? loginInfo, string? requiredItem)
     {
-        while (client.User == null)
-            switch (await client.Login(loginInfo))
+        while (_client.User == null)
+            switch (await _client.Login(loginInfo))
             {
                 case "verification_code": 
                 {
@@ -51,7 +42,7 @@ public static class Client
                     break;
                 }
             }
-        username = client.User.ToString();
+        username = _client.User.ToString();
         return null;
     }
     public static void SetSessionPath(string platform)
@@ -68,9 +59,6 @@ public static class Client
                 throw new Exception("The platform is unknown");
         }
     }
-    private static void CreateClientIfNeeded()
-    {
-        client ??= new WTelegram.Client(int.Parse(apiID), apiHash, _sessionPath);
-    }
+    private static void CreateClientIfNeeded() => _client ??= new WTelegram.Client(apiID, apiHash, _sessionPath);
     private static void DebugLogger(int level, string message) => Debug.WriteLine(message);
 }
