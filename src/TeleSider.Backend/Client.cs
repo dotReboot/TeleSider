@@ -5,14 +5,19 @@ namespace Backend;
 public static partial class Client
 {
     private static WTelegram.Client? _client;
-    private static string? _sessionPath;
-    public static string username = "";
+
     private static readonly int apiID;
     private static readonly string apiHash;
+    private static string? _sessionPath;
+
+    public static bool isLoggedIn = false;
+
+    private static bool _isExistingSessionChecked = false;
+
 
     public static async Task Login(string? phoneNumber=null)
     {
-        _client?.Dispose();
+        DisposeClient();
         CreateClientIfNeeded();
         await DoLogin(phoneNumber, "verification_code");
     }
@@ -42,7 +47,7 @@ public static partial class Client
                     break;
                 }
             }
-        username = _client.User.ToString();
+        isLoggedIn = true;
         return null;
     }
     public static void SetSessionPath(string platform)
@@ -59,6 +64,49 @@ public static partial class Client
                 throw new Exception("The platform is unknown");
         }
     }
-    private static void CreateClientIfNeeded() => _client ??= new WTelegram.Client(apiID, apiHash, _sessionPath);
+    // returns true if the current user is successfully logged in, otherwise returns false
+    public static async Task<bool> ResumeSession()
+    {
+        if (!_isExistingSessionChecked)
+        {
+            CreateClientIfNeeded();
+            try
+            {
+                await _client.LoginUserIfNeeded(null, false);
+                isLoggedIn = true;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Failed to resume the session");
+                Debug.WriteLine(ex.Message);
+            }
+            _isExistingSessionChecked = true;
+        }
+        return isLoggedIn;
+    }
+
+    private static void CreateClientIfNeeded() => _client ??= new WTelegram.Client(Config);
+    public static void DisposeClient() => _client?.Dispose();
+    public static string GetUsername()
+    {
+        if (_client != null)
+        {
+            return _client.User.ToString();
+        }
+        throw new Exception("You must login first");
+    }
+
+    static string Config(string what)
+    {
+        switch (what)
+        {
+            case "api_id": return apiID.ToString();
+            case "api_hash": return apiHash;
+            case "session_pathname": return _sessionPath;
+            case "user_id": return "-1";
+            default: return null;
+        }
+    }
+
     private static void DebugLogger(int level, string message) => Debug.WriteLine(message);
 }

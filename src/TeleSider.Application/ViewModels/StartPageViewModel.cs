@@ -78,11 +78,12 @@ public partial class StartPageViewModel : ObservableObject
     [RelayCommand]
     private async Task LoginTheExistingUser()
     {
-        // Resume the previous session
-        if (Client.username != "")
+        SetSignInButtonText(true);
+        if (await Client.ResumeSession())
         {
             await Shell.Current.GoToAsync(nameof(HomePage));
-        } 
+        }
+        SetSignInButtonText();
     }
     private async Task<bool> IsConnected()
     {
