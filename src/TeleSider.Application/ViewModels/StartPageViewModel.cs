@@ -52,6 +52,10 @@ public partial class StartPageViewModel : ObservableObject
                             SetSignInButtonText();
                         }
                     }
+                    else
+                    {
+                        SetSignInButtonText();
+                    }
                 }
                 else
                 {
