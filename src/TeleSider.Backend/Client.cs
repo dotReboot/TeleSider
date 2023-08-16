@@ -5,10 +5,10 @@ namespace Backend;
 public static partial class Client
 {
     private static WTelegram.Client? _client;
-    private static string? _sessionPath;
-    public static string username = "";
+
     private static readonly int apiID;
     private static readonly string apiHash;
+    private static string? _sessionPath;
 
     public static async Task Login(string? phoneNumber=null)
     {
@@ -42,7 +42,6 @@ public static partial class Client
                     break;
                 }
             }
-        username = _client.User.ToString();
         return null;
     }
     public static void SetSessionPath(string platform)
@@ -60,5 +59,13 @@ public static partial class Client
         }
     }
     private static void CreateClientIfNeeded() => _client ??= new WTelegram.Client(apiID, apiHash, _sessionPath);
+    public static string GetUsername()
+    {
+        if (_client != null)
+        {
+            return _client.User.ToString();
+        }
+        throw new Exception("You must login first");
+    }
     private static void DebugLogger(int level, string message) => Debug.WriteLine(message);
 }
