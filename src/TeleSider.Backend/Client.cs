@@ -59,13 +59,16 @@ public static partial class Client
         }
     }
     private static void CreateClientIfNeeded() => _client ??= new WTelegram.Client(apiID, apiHash, _sessionPath);
-    public static string GetUsername()
+    public static string? GetUsername()
     {
-        if (_client != null)
+        if (_client != null && _client.User != null)
         {
             return _client.User.ToString();
         }
-        throw new Exception("You must login first");
+        else
+        {
+            return null;
+        }
     }
     private static void DebugLogger(int level, string message) => Debug.WriteLine(message);
 }

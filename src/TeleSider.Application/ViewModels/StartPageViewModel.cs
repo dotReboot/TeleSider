@@ -85,7 +85,7 @@ public partial class StartPageViewModel : ObservableObject
         try
         {
             // Resume the previous session
-            if (Client.GetUsername() != "")
+            if (Client.GetUsername() != null)
             {
                 await Shell.Current.GoToAsync(nameof(HomePage));
             }
