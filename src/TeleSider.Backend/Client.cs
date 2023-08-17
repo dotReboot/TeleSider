@@ -6,6 +6,7 @@ public static partial class Client
 {
     private static WTelegram.Client? _client;
 
+
     private static readonly int apiID;
     private static readonly string apiHash;
     private static string? _sessionPath;
@@ -87,13 +88,16 @@ public static partial class Client
 
     private static void CreateClientIfNeeded() => _client ??= new WTelegram.Client(Config);
     public static void DisposeClient() => _client?.Dispose();
-    public static string GetUsername()
+    public static string? GetUsername()
     {
-        if (_client != null)
+        if (_client != null && _client.User != null)
         {
             return _client.User.ToString();
         }
-        throw new Exception("You must login first");
+        else
+        {
+            return null;
+        }
     }
 
     static string Config(string what)
