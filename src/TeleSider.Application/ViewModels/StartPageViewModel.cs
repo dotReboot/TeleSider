@@ -21,7 +21,7 @@ public partial class StartPageViewModel : ObservableObject
     private async Task SignInButtonPressed()
     {
 #if ANDROID
-        Platforms.KeyboardManager.HideKeyboard();
+        KeyboardManager.HideKeyboard();
 #endif
         if (!String.IsNullOrWhiteSpace(PhoneNumber))
         {
@@ -94,7 +94,7 @@ public partial class StartPageViewModel : ObservableObject
             if (await Client.ResumeSession())
             {
 #if ANDROID
-                Platforms.KeyboardManager.HideKeyboard();
+                KeyboardManager.HideKeyboard();
 #endif
                 await Shell.Current.GoToAsync(nameof(HomePage));
             }
