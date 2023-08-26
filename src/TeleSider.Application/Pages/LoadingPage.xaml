@@ -9,9 +9,11 @@
         <BackButtonBehavior IsEnabled="False" IsVisible="False"/>
     </Shell.BackButtonBehavior>
     <ContentPage.Behaviors>
-        <toolkit:StatusBarBehavior StatusBarColor="{StaticResource Secondary}"/>
+        <toolkit:EventToCommandBehavior
+        EventName="Appearing"
+        Command="{Binding AppearWithRandomColorCommand}" />
     </ContentPage.Behaviors>
-    <Grid BackgroundColor="{StaticResource Secondary}">
+    <Grid BackgroundColor="{Binding PageColor}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="100" />
@@ -29,7 +31,8 @@
             HorizontalOptions="Center" />
         <Label
             Grid.Row="1"
-            Text="#60ABA8"
+            Text="{Binding PageColorText}"
+            TextColor="{StaticResource Tertiary}"
             FontSize="14"
             VerticalOptions="End"
             HorizontalOptions="Center" />
