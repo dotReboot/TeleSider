@@ -18,16 +18,17 @@ public partial class App : Application
 
         task.ContinueWith((task) =>
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
+            MainThread.BeginInvokeOnMainThread(() =>
             {
                 MainPage = new AppShell();
+                ShellNavigation.ClearNavigationStack();
                 if (Client.isLoggedIn)
                 {
-                    await Shell.Current.GoToAsync(nameof(HomePage));
+                    Shell.Current.GoToAsync(nameof(HomePage));
                 }
                 else
                 {
-                    await Shell.Current.GoToAsync(nameof(StartPage));
+                    Shell.Current.GoToAsync(nameof(StartPage));
                 }
             });
         });
