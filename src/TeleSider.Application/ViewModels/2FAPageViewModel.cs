@@ -33,6 +33,7 @@ public partial class _2FAPageViewModel : ObservableObject
                 {
                     SetSubmitButtonText(true);
                     await Client.DoLogin(Password, null);
+                    ShellNavigation.ClearNavigationStack();
                     await Shell.Current.GoToAsync(nameof(HomePage));
                 }
                 catch

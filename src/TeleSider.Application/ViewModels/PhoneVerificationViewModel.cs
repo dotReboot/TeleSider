@@ -36,6 +36,7 @@ public partial class PhoneVerificationPageViewModel : ObservableObject
                 {
                     SetVerifyButtonText(true);
                     string requiredItem = await Client.DoLogin(VerificationCode, "password");
+                    ShellNavigation.ClearNavigationStack();
                     if (requiredItem == "password") 
                     {
                         await Shell.Current.GoToAsync(nameof(_2FAPage));

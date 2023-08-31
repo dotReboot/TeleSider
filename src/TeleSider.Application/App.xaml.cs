@@ -21,7 +21,6 @@ public partial class App : Application
             MainThread.BeginInvokeOnMainThread(() =>
             {
                 MainPage = new AppShell();
-                ShellNavigation.ClearNavigationStack();
                 if (Client.isLoggedIn)
                 {
                     Shell.Current.GoToAsync(nameof(HomePage));
