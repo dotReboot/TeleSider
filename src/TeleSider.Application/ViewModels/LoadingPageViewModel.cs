@@ -13,6 +13,16 @@ public partial class LoadingPageViewModel : ObservableObject
     [ObservableProperty]
     private string pageColorText;
 
+    [ObservableProperty]
+    private string loadingPageText;
+
+    [RelayCommand]
+    private void Appearing()
+    {
+        SetBackgroundColor();
+        LoadingPageText = Client.isExistingSessionChecked ? "Tap on the screen to navigate" : "Loading...";
+    }
+
     [RelayCommand]
     private async Task ScreenTapped()
     {
@@ -28,8 +38,14 @@ public partial class LoadingPageViewModel : ObservableObject
             }
         }
     }
+
     [RelayCommand]
-    private void AppearWithRandomColor()
+    private void SwipedDown()
+    {
+        App.Current.Quit();
+    }
+    [RelayCommand]
+    private void SetBackgroundColor()
     {
         Random random = new();
         List<Color> colors = new();

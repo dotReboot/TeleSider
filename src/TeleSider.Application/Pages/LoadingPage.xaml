@@ -11,26 +11,42 @@
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior
         EventName="Appearing"
-        Command="{Binding AppearWithRandomColorCommand}" />
+        Command="{Binding AppearingCommand}" />
     </ContentPage.Behaviors>
-    <Grid BackgroundColor="{Binding PageColor}">
+    <Grid BackgroundColor="{Binding PageColor}" RowSpacing="10">
         <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
         <Grid.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding ScreenTappedCommand}"/>
+            <SwipeGestureRecognizer Direction="Down" Command="{Binding SwipedDownCommand}"/>
         </Grid.GestureRecognizers>
         <Label
             Grid.Row="0"
-            Margin="0,60,0,0"
+            Margin="0,50,0,0"
             Text="TeleSider"
             TextColor="{StaticResource Tertiary}"
             FontSize="52"
             VerticalOptions="Start"
             HorizontalOptions="Center" />
+        <VerticalStackLayout Grid.Row="1" Spacing="60">
+            <Label
+                Text="{Binding LoadingPageText}"
+                TextColor="{StaticResource Tertiary}"
+                FontSize="20"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+            <Label
+                Text="Swipe down to quit"
+                TextColor="{StaticResource Tertiary}"
+                FontSize="20"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+        </VerticalStackLayout>
         <Label
-            Grid.Row="1"
+            Grid.Row="2"
             Text="{Binding PageColorText}"
             TextColor="{StaticResource Tertiary}"
             FontSize="14"
