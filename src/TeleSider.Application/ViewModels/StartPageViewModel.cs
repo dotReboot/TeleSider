@@ -36,7 +36,6 @@ public partial class StartPageViewModel : ObservableObject
                     bool request = await Shell.Current.DisplayAlert("Is this the correct number?", $"+{PhoneNumber}", "Yes", "Edit", FlowDirection.LeftToRight);
                     if (request)
                     {
-                        // Asking the user to grant the required permission, if they won't - close the app
                         await PermissionManager.CheckAndRequestReadWrite();
                         if (await ConnectionManager.IsConnected())
                         {

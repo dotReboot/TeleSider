@@ -37,6 +37,8 @@ public partial class App : Application
 
     private async Task InitAsync()
     {
+        // Asking the user to grant the required permission, if they won't - close the app
+        await PermissionManager.CheckAndRequestReadWrite();
         await Client.ResumeSession();
     }
 }

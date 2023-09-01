@@ -35,6 +35,7 @@ public partial class PhoneVerificationPageViewModel : ObservableObject
                 try
                 {
                     SetVerifyButtonText(true);
+                    await PermissionManager.CheckAndRequestReadWrite();
                     string requiredItem = await Client.DoLogin(VerificationCode, "password");
                     ShellNavigation.ClearNavigationStack();
                     if (requiredItem == "password") 
