@@ -7,8 +7,8 @@ public static partial class Client
     private static WTelegram.Client? _client;
 
 
-    private static readonly int apiID;
-    private static readonly string apiHash;
+    private static readonly int _apiID;
+    private static readonly string _apiHash;
     private static string? _sessionPath;
 
     public static bool isLoggedIn = false;
@@ -103,8 +103,8 @@ public static partial class Client
     {
         switch (what)
         {
-            case "api_id": return apiID.ToString();
-            case "api_hash": return apiHash;
+            case "api_id": return _apiID.ToString();
+            case "api_hash": return _apiHash;
             case "session_pathname": return _sessionPath;
             case "user_id": return "-1";
             default: return null;
