@@ -39,6 +39,9 @@ public partial class App : Application
     {
         // Asking the user to grant the required permission, if they won't - close the app
         await PermissionManager.CheckAndRequestReadWrite();
-        await Client.ResumeSession();
+        if (await ConnectionManager.IsConnected())
+        {
+            await Client.ResumeSession();
+        }
     }
 }
