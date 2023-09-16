@@ -44,7 +44,7 @@ public partial class PhoneVerificationPageViewModel : ObservableObject
                     }
                     else
                     {
-                        await Shell.Current.GoToAsync(nameof(HomePage));
+                        await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
                     }
                 }
                 catch

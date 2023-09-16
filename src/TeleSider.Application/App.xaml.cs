@@ -23,7 +23,7 @@ public partial class App : Application
                 MainPage = new AppShell();
                 if (Client.isLoggedIn)
                 {
-                    Shell.Current.GoToAsync(nameof(HomePage));
+                    Shell.Current.GoToAsync($"//{nameof(HomePage)}");
                 }
                 else
                 {

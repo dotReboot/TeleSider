@@ -35,7 +35,7 @@ public partial class _2FAPageViewModel : ObservableObject
                     await PermissionManager.CheckAndRequestReadWrite();
                     await Client.DoLogin(Password, null);
                     ShellNavigation.ClearNavigationStack();
-                    await Shell.Current.GoToAsync(nameof(HomePage));
+                    await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
                 }
                 catch
                 {

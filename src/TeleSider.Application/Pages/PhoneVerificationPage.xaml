@@ -5,11 +5,12 @@
              xmlns:viewmodel="clr-namespace:TeleSider.ViewModels"
              x:DataType="viewmodel:PhoneVerificationPageViewModel"
              x:Class="TeleSider.Pages.PhoneVerificationPage"
-             Title="Verify your phone number">
+             Title="Verify your phone number"
+             BackgroundColor="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Primary}}">
     <ContentPage.Behaviors>
         <toolkit:StatusBarBehavior StatusBarColor="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Primary}}"/>
     </ContentPage.Behaviors>
-    <VerticalStackLayout BackgroundColor="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Primary}}">
+    <VerticalStackLayout>
         <Frame
             Margin="0,120"
             CornerRadius="15"

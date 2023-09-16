@@ -4,14 +4,16 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:viewmodel="clr-namespace:TeleSider.ViewModels"
              x:DataType="viewmodel:StartPageViewModel"
-             x:Class="TeleSider.Pages.StartPage">
+             x:Class="TeleSider.Pages.StartPage"
+             BackgroundColor="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Primary}}"
+             >
     <ContentPage.Behaviors>
         <toolkit:StatusBarBehavior StatusBarColor="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Primary}}"/>
     </ContentPage.Behaviors>
     <Shell.BackButtonBehavior>
         <BackButtonBehavior IsEnabled="False" IsVisible="False"/>
     </Shell.BackButtonBehavior>
-    <VerticalStackLayout Spacing="5" Padding="0,20,0,0" BackgroundColor="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Primary}}">
+    <VerticalStackLayout Spacing="5" Padding="0,20,0,0">
         <Label
             Text="Welcome to"
             FontSize="18"

@@ -9,4 +9,8 @@
     <ShellContent
         ContentTemplate="{DataTemplate local:LoadingPage}"
         Route="LoadingPage"/>
+    <TabBar Route="HomePage">
+        <ShellContent Title="Home" Route="HomePage" ContentTemplate="{DataTemplate local:HomePage}"/>
+        <ShellContent Title="Profile" Route="ProfilePage" ContentTemplate="{DataTemplate local:ProfilePage}"/>
+    </TabBar>
 </Shell>

@@ -368,3 +368,4 @@ FodyWeavers.xsd
 
 # Secrets
 src/TeleSider.Backend/ClientInitializer.cs
+/src/global.json
