@@ -5,7 +5,12 @@
              x:DataType="viewmodel:ProfilePageViewModel"
              x:Class="TeleSider.Pages.ProfilePage"
              BackgroundColor="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Primary}}">
-    <VerticalStackLayout>
+    <VerticalStackLayout Spacing="10">
+        <Rectangle
+            Fill="{StaticResource Gray900}"
+            WidthRequest="150"
+            HeightRequest="150"
+            />
         <Label 
             Text="{Binding Username}"
             VerticalOptions="Center" 

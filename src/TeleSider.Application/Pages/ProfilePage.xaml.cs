@@ -1,15 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TeleSider.ViewModels;
 
 namespace TeleSider.Pages;
 
 public partial class ProfilePage : ContentPage
 {
-    public ProfilePage()
+    public ProfilePage(ProfilePageViewModel vm)
     {
         InitializeComponent();
+        BindingContext = vm;
     }
 }
