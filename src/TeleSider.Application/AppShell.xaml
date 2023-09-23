@@ -10,7 +10,7 @@
         ContentTemplate="{DataTemplate local:LoadingPage}"
         Route="LoadingPage"/>
     <TabBar Route="HomePage">
-        <ShellContent Route="HomePage" Icon="appicon.svg" ContentTemplate="{DataTemplate local:HomePage}"/>
-        <ShellContent Route="ProfilePage" Icon="profile.svg" ContentTemplate="{DataTemplate local:ProfilePage}"/>
+        <ShellContent Route="HomePage" Icon="mainicon.svg" ContentTemplate="{DataTemplate local:HomePage}"/>
+        <ShellContent Route="ProfilePage" Icon="profileicon.svg" ContentTemplate="{DataTemplate local:ProfilePage}"/>
     </TabBar>
 </Shell>
