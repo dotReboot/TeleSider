@@ -6,7 +6,7 @@ The app has a simple cloud storage UI to help you manage your saved messages
 | Platform | Supported |
 | ------- | ------------------ |
 | Android | :white_check_mark: |
-| Windows | :white_check_mark: |
+| Windows | :x: |
 | iOS | :x: |
 | MacOS | :x: |
 

@@ -1,7 +1,7 @@
 ﻿using Android.Content;
 using Android.Views.InputMethods;
 
-namespace TeleSider;
+namespace TeleSider.Services;
 public static partial class KeyboardManager
 {
     public static void HideKeyboard()

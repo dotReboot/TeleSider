@@ -1,4 +1,4 @@
-namespace TeleSider;
+namespace TeleSider.Services;
 public static class ConnectionManager
 {
     public static async Task<bool> IsConnected(bool displayAlert=true)

@@ -1,11 +1,24 @@
 ﻿using System.Diagnostics;
-using WTelegram;
+using System.IO.Enumeration;
+using TL;
 
-namespace Backend;
+namespace TeleSider.Backend;
 public static partial class Client
 {
     private static WTelegram.Client? _client;
+    private static Messages_MessagesBase? _savedMessagesHistory;
 
+    public static TL.User User
+    {
+        get
+        {
+            if (_client == null || _client.User == null)
+            {
+                throw new NullReferenceException();
+            }
+            return _client.User;
+        }
+    }
 
     private static readonly int _apiID;
     private static readonly string _apiHash;
@@ -13,6 +26,7 @@ public static partial class Client
 
     public static bool isLoggedIn = false;
     public static bool isExistingSessionChecked = false;
+
 
 
     public static async Task Login(string? phoneNumber=null)
@@ -48,22 +62,11 @@ public static partial class Client
                 }
             }
         isLoggedIn = true;
+        await DownloadSavedMessagesHistory();
+        await DownloadUserAvatar(_client.User, "avatar.jpg");
         return null;
     }
-    public static void SetSessionPath(string platform)
-    {
-        switch (platform)
-        {
-            case "Android":
-                _sessionPath = "/data/data/com.telesider.telesider/files/TeleSider.session";
-                break;
-            case "WinUI":
-                break;
-            // Other platforms
-            default:
-                throw new Exception("The platform is unknown");
-        }
-    }
+
     // returns true if the current user is successfully logged in, otherwise returns false
     public static async Task<bool> ResumeSession()
     {
@@ -74,6 +77,9 @@ public static partial class Client
             {
                 await _client.LoginUserIfNeeded(null, false);
                 isLoggedIn = true;
+                await DownloadSavedMessagesHistory();
+                await DownloadUserAvatar(_client.User, "avatar.jpg");
+
             }
             catch (Exception ex)
             {
@@ -86,28 +92,76 @@ public static partial class Client
     }
 
     private static void CreateClientIfNeeded() => _client ??= new WTelegram.Client(Config);
-    public static void DisposeClient() => _client?.Dispose();
-    public static string? GetUsername()
-    {
-        if (_client != null && _client.User != null)
-        {
-            return _client.User.ToString();
-        }
-        else
-        {
-            return null;
-        }
-    }
 
-    static string Config(string what)
+    static string? Config(string item)
     {
-        switch (what)
+        switch (item)
         {
             case "api_id": return _apiID.ToString();
             case "api_hash": return _apiHash;
             case "session_pathname": return _sessionPath;
             case "user_id": return "-1";
             default: return null;
+        }
+    }
+
+    public static void DisposeClient() => _client?.Dispose();
+
+
+    public static async Task DownloadSavedMessagesHistory()
+    {
+        _savedMessagesHistory = await _client.Messages_GetHistory(InputPeer.Self);
+    }
+
+    public static async Task DownloadUserAvatar(IPeerInfo peer, string filename)
+    {
+        try
+        {
+            using var fileStream = File.Create(Path.Combine(FileSystem.Current.CacheDirectory, filename));
+            var type = await _client.DownloadProfilePhotoAsync(peer, fileStream);
+            fileStream.Close();
+        }
+        catch (Exception e)
+        {
+#if DEBUG
+            Debug.WriteLine(e);
+#endif
+        }
+    }
+
+    public static async Task<int> CountTextMessages()
+    {
+        if (_savedMessagesHistory == null)
+        {
+            await DownloadSavedMessagesHistory();
+        }
+        return _savedMessagesHistory.Messages.OfType<Message>().Where(m => !m.flags.HasFlag(TL.Message.Flags.has_media))
+                                                 .Select(m => m.message).ToArray().Length;
+    }
+
+    public static async Task<int> CountMessagesOfMediaType<T>() where T : MessageMedia
+    {
+        if (_savedMessagesHistory == null)
+        {
+            await DownloadSavedMessagesHistory();
+        }
+        return _savedMessagesHistory.Messages.OfType<Message>().Select(m => m.media).OfType<T>().ToArray().Length;
+    }
+
+
+
+    public static void SetSessionPath(string platform)
+    {
+        switch (platform)
+        {
+            case "Android":
+                _sessionPath = "/data/data/com.telesider.telesider/files/TeleSider.session";
+                break;
+            case "WinUI":
+                break;
+            // Other platforms
+            default:
+                throw new Exception("The platform is unknown");
         }
     }
 

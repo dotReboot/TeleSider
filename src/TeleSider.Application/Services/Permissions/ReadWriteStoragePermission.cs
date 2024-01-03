@@ -1,4 +1,6 @@
-﻿public class ReadWriteStoragePermission : Permissions.BasePlatformPermission
+﻿namespace TeleSider.Services;
+
+public class ReadWriteStoragePermission : Permissions.BasePlatformPermission
 {
 #if ANDROID
     public override (string androidPermission, bool isRuntime)[] RequiredPermissions =>

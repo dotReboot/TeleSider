@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace TeleSider;
+namespace TeleSider.Services;
 public static class ShellNavigation
 {
     public static void ClearNavigationStack()

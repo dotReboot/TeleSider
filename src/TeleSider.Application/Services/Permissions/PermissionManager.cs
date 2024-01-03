@@ -1,5 +1,7 @@
 ﻿using TeleSider;
 
+namespace TeleSider.Services;
+
 public static class PermissionManager
 {
     public static async Task<PermissionStatus> CheckAndRequestReadWrite()

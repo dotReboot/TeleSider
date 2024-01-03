@@ -13,7 +13,7 @@
     <Shell.BackButtonBehavior>
         <BackButtonBehavior IsEnabled="False" IsVisible="False"/>
     </Shell.BackButtonBehavior>
-    <VerticalStackLayout Spacing="5" Padding="0,20,0,0">
+    <VerticalStackLayout Spacing="15" Padding="0,20,0,0">
         <Label
             Text="Welcome to"
             FontSize="18"
