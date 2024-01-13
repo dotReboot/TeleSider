@@ -12,7 +12,7 @@ public static partial class Client
     {
         get
         {
-            if (_client == null || _client.User == null)
+            if (_client is null || _client.User is null)
             {
                 throw new NullReferenceException();
             }
@@ -39,7 +39,7 @@ public static partial class Client
     // returns the required Item, null if the user is logged in
     public static async Task<string?> DoLogin(string? loginInfo, string? requiredItem)
     {
-        while (_client.User == null)
+        while (_client.User is null)
             switch (await _client.Login(loginInfo))
             {
                 case "verification_code": 
@@ -131,7 +131,7 @@ public static partial class Client
 
     public static async Task<int> CountTextMessages()
     {
-        if (_savedMessagesHistory == null)
+        if (_savedMessagesHistory is null)
         {
             await DownloadSavedMessagesHistory();
         }
@@ -141,7 +141,7 @@ public static partial class Client
 
     public static async Task<int> CountMessagesOfMediaType<T>() where T : MessageMedia
     {
-        if (_savedMessagesHistory == null)
+        if (_savedMessagesHistory is null)
         {
             await DownloadSavedMessagesHistory();
         }

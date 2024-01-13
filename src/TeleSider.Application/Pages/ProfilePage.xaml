@@ -14,33 +14,26 @@
         <VerticalStackLayout Spacing="30">
             <Frame Margin="0,-30,0,0" BackgroundColor="{StaticResource Primary}" CornerRadius="25">
                 <VerticalStackLayout Margin="0,30,0,30" HorizontalOptions="Center">
-                    <Grid Margin="0,30">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="4*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Frame Grid.Column="1"
-                               BackgroundColor="{StaticResource Primary}"
-                               CornerRadius="15"
-                               HeightRequest="150"
-                               WidthRequest="150">
+                    <Frame
+                        Margin="0,30"
+                        BackgroundColor="White"
+                        CornerRadius="15"
+                        HeightRequest="175"
+                        WidthRequest="175"
+                        HorizontalOptions="Center"
+                        >
                         <Image
                                 Source="{Binding ProfilePhotoPath}"
-                                HeightRequest="150"
-                                WidthRequest="150" />
+                                HeightRequest="175"
+                                WidthRequest="175" />
                         </Frame>
-                    </Grid>
                     <HorizontalStackLayout Spacing="5" HorizontalOptions="Center">
                         <Label Text="{Binding FirstName}" FontSize="32"/>
                         <Label Text="{Binding LastName}" FontSize="32"/>
                     </HorizontalStackLayout>
                     <Label Text="{Binding Username}" FontSize="20" HorizontalOptions="Center"/>
                 </VerticalStackLayout>
-                </Frame>
+            </Frame>
             <Frame Margin="0,-60,0,0" Padding="0,10" BackgroundColor="{StaticResource Secondary}" CornerRadius="25" HorizontalOptions="Center">
                 <Label Margin="10,0" Text="{Binding BadgeText}" FontSize="24"/>
             </Frame>
