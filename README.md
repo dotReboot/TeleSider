@@ -19,4 +19,4 @@ TeleSider on Android and Windows is built with .NET MAUI, a cross-platform frame
 Feel free to contribute or suggest a feature
 
 # 📄 Licence
-TeleSider is licenced under the [GPL-3.0 license](https://github.com/TeleSider/TeleSider-MAUI-App/blob/master/LICENSE)
+TeleSider is licenced under the [GPL-3.0 license](https://github.com/dotReboot/TeleSider/blob/master/LICENSE)
